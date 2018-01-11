@@ -1,6 +1,6 @@
 version: 2
 jobs:
- build-content-job:
+  build-content-job:
     docker:
       - image: circleci/python:3.6.2
     working_directory: /tmp/blog
@@ -62,7 +62,7 @@ jobs:
           paths:
             - published
 
- deploy-job:
+  deploy-job:
     docker:
       - image: alpine
     working_directory: /tmp/blog

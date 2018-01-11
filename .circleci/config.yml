@@ -95,7 +95,8 @@ jobs:
           name: Install dependencies
           command: |
             # Ref: https://unix.stackexchange.com/questions/34549/how-to-rename-multiple-files-by-removing-the-extension#comment46942_34578
-            for i in ./published/**/*.html; do mv -i "$i" "${i%.html}"; done
+            # for i in ./published/**/*.html; do mv -i "$i" "${i%.html}"; done
+            find . -name "*.html" -exec rename 's/\.html$//' '{}' \;
 
       - persist_to_workspace:
           root: /tmp/workspace

@@ -95,7 +95,7 @@ jobs:
           name: Install dependencies
           command: |
             # Ref: https://unix.stackexchange.com/questions/34549/how-to-rename-multiple-files-by-removing-the-extension#comment46942_34578
-            for i in ./*.html; do mv -i "$i" "${i%.html}"; done
+            for i in ./published/**/*.html; do mv -i "$i" "${i%.html}"; done
 
       - persist_to_workspace:
           root: /tmp/workspace
@@ -134,6 +134,7 @@ jobs:
             source /tmp/venv/bin/activate
 
             aws s3 sync /tmp/workspace/published s3://blog-vaclavdohnal-cz/ --delete
+            # https://serverfault.com/questions/725562/recursively-changing-the-content-type-for-files-of-a-given-extension-on-amazon-s
             aws s3 cp --include "*" \
                       --content-type="text/html" \
                       --metadata-directive="REPLACE" \

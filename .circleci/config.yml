@@ -94,7 +94,10 @@ jobs:
           command: |
             # Ref: https://unix.stackexchange.com/questions/34549/how-to-rename-multiple-files-by-removing-the-extension#comment46942_34578
             # for i in ./published/**/*.html; do mv -i "$i" "${i%.html}"; done
-            find . -name "*.html" -exec rename 's/\.html$//' '{}' \;
+
+            find ./published/posts/ ./published/pages/ -name "*.html" -exec rename 's/\.html$//' '{}' \;
+            find ./published/posts/ ./published/pages/ -name "*.html" -type f -delete
+
 
       - persist_to_workspace:
           root: /tmp/workspace
@@ -130,12 +133,6 @@ jobs:
           paths:
             - /tmp/venv/
           key: v1-venv-deploy-{{ .Branch }}-{{ epoch }}
-
-      - run:
-          name: Deploy to S3 if tests pass and branch is Master
-          command: |
-            cd /tmp/workspace/published
-            find . -name "*.html" -type f -delete
 
       - run:
           name: Deploy to S3 if tests pass and branch is Master

@@ -8,3 +8,4 @@
             #          --content-type="text/html" \
             #          --metadata-directive="REPLACE" \
             #          --recursive s3://${S3_BUCKET_NAME}/posts/ s3://${S3_BUCKET_NAME}/posts/
++

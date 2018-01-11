@@ -92,19 +92,33 @@ jobs:
 
   deploy-job:
     docker:
-      - image: alpine
-    working_directory: /tmp/blog
+      - image: circleci/python:3.6.2
+    working_directory: /tmp/workspace
     steps:
       - attach_workspace:
           at: /tmp/workspace
+
+      - restore_cache:
+          name: Restore Python virtual environment cache
+          keys:
+          - v1-venv2-{{ .Branch }}-
+          - v1-venv2-
+
       - run:
-          name: Install dependencies
+          name: Install Python dependencies
           command: |
-            cd /tmp/workspace/published
-            ls
-#      - run:
-#          name: Deploy to S3 if tests pass and branch is Master
-#          command: aws s3 sync jekyll/_site/docs s3://circle-production-static-site/docs/ --delete
+            python3 -m venv /tmp/venv
+            source /tmp/venv/bin/activate
+            pip install --no-input --compile --exists-action=a --use-wheel --upgrade awscli
+
+      - save_cache:
+          paths:
+            - /tmp/venv/
+          key: v1-venv2-{{ .Branch }}-{{ epoch }
+
+      - run:
+          name: Deploy to S3 if tests pass and branch is Master
+          command: aws s3 sync /tmp/workspace/published s3://blog-vaclavdohnal-cz/ --delete
 
 workflows:
   version: 2

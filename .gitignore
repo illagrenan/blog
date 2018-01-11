@@ -172,3 +172,4 @@ Temporary Items
 *.sock
 .bash_history
 .htpasswd
+node_modules

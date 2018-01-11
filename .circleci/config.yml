@@ -15,16 +15,14 @@ jobs:
       - restore_cache:
           name: Restore Python virtual environment cache
           keys:
-          - v1-venv-{{ .Branch }}-{{ checksum "./requirements.txt" }}-
-          - v1-venv-{{ .Branch }}-
-          - v1-venv-
+          - v1-venv-build-content-{{ .Branch }}-{{ checksum "./requirements.txt" }}-
+          - v1-venv-build-content-{{ .Branch }}-
+          - v1-venv-build-content-
 
       - run:
-          name: Install Python dependencies
+          name: Create virtualenv
           command: |
             python3 -m venv /tmp/venv
-            source /tmp/venv/bin/activate
-            pip install --no-input --compile --exists-action=a --use-wheel --upgrade wheel setuptools awscli invoke
 
       - run:
           name: Install dependencies
@@ -41,7 +39,7 @@ jobs:
       - save_cache:
           paths:
             - /tmp/venv/
-          key: v1-venv-{{ .Branch }}-{{ checksum "./requirements.txt" }}-{{ epoch }}
+          key: v1-venv-build-content-{{ .Branch }}-{{ checksum "./requirements.txt" }}-{{ epoch }}
 
       - persist_to_workspace:
           root: /tmp/workspace
@@ -114,20 +112,24 @@ jobs:
       - restore_cache:
           name: Restore Python virtual environment cache
           keys:
-          - v1-venv2-{{ .Branch }}-
-          - v1-venv2-
+          - v1-venv-deploy-{{ .Branch }}-
+          - v1-venv-deploy-
+
+      - run:
+          name: Create virtualenv
+          command: |
+            python3 -m venv /tmp/venv
 
       - run:
           name: Install Python dependencies
           command: |
-            python3 -m venv /tmp/venv
             source /tmp/venv/bin/activate
             pip install --no-input --compile --exists-action=a --use-wheel --upgrade awscli
 
       - save_cache:
           paths:
             - /tmp/venv/
-          key: v1-venv2-{{ .Branch }}-{{ epoch }}
+          key: v1-venv-deploy-{{ .Branch }}-{{ epoch }}
 
       - run:
           name: Deploy to S3 if tests pass and branch is Master

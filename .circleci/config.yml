@@ -80,7 +80,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            node_modules/.bin/bower install --config.interactive=false
+            node_modules/.bin/bower install --config.interactive=false --allow-root
             node_modules/.bin/gulp less --production
             node_modules/.bin/gulp minify
 

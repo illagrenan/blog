@@ -89,15 +89,7 @@ jobs:
             node_modules/.bin/gulp less --production
             node_modules/.bin/gulp minify
 
-      - run:
-          name: Install dependencies
-          command: |
-            # Ref: https://unix.stackexchange.com/questions/34549/how-to-rename-multiple-files-by-removing-the-extension#comment46942_34578
-            # for i in ./published/**/*.html; do mv -i "$i" "${i%.html}"; done
-
-            find ./published/posts/ ./published/pages/ -name "*.html" -exec rename 's/\.html$//' '{}' \;
-            find ./published/posts/ ./published/pages/ -name "*.html" -type f -delete
-
+            find ./published
 
       - persist_to_workspace:
           root: /tmp/workspace
@@ -135,9 +127,22 @@ jobs:
           key: v1-venv-deploy-{{ .Branch }}-{{ epoch }}
 
       - run:
+          name: Install dependencies
+          command: |
+            # Ref: https://unix.stackexchange.com/questions/34549/how-to-rename-multiple-files-by-removing-the-extension#comment46942_34578
+            # for i in ./published/**/*.html; do mv -i "$i" "${i%.html}"; done
+
+            find ./published
+
+            find ./published/posts/ ./published/pages/ -name "*.html" -exec rename 's/\.html$//' '{}' \;
+            find ./published/posts/ ./published/pages/ -name "*.html" -type f -delete
+
+      - run:
           name: Deploy to S3 if tests pass and branch is Master
           command: |
             source /tmp/venv/bin/activate
+
+            find ./published
 
             aws s3 sync /tmp/workspace/published s3://${S3_BUCKET_NAME}/ --exclude "pages/*" --exclude "posts/*" --delete --acl='public-read'
             aws s3 sync /tmp/workspace/published/pages s3://${S3_BUCKET_NAME}/pages --delete --acl='public-read' --no-guess-mime-type  --content-type="text/html"

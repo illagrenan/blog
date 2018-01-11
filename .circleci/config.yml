@@ -126,7 +126,9 @@ jobs:
 
       - run:
           name: Deploy to S3 if tests pass and branch is Master
-          command: aws s3 sync /tmp/workspace/published s3://blog-vaclavdohnal-cz/ --delete
+          command: |
+            source /tmp/venv/bin/activate
+            aws s3 sync /tmp/workspace/published s3://blog-vaclavdohnal-cz/ --delete
 
 workflows:
   version: 2

@@ -1,0 +1,4 @@
+pelican~=3.7.1
+invoke
+typogrify
+markdown

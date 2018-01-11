@@ -12,7 +12,7 @@ sys.path.append(os.curdir)
 # noinspection PyUnresolvedReferences
 from pelicanconf import *
 
-SITEURL = 'https://blog.vaclavdohnal.cz'
+SITEURL = os.getenv('PELICAN_SITEURL', 'https://blog.vaclavdohnal.cz')
 RELATIVE_URLS = False
 
 FEED_ALL_ATOM = 'feeds/all.atom.xml'

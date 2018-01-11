@@ -140,13 +140,6 @@ jobs:
             aws s3 sync /tmp/workspace/published/pages s3://${S3_BUCKET_NAME}/pages --delete --acl='public-read' --no-guess-mime-type  --content-type="text/html"
             aws s3 sync /tmp/workspace/published/posts s3://${S3_BUCKET_NAME}/posts --delete --acl='public-read' --no-guess-mime-type  --content-type="text/html"
 
-
-            # https://serverfault.com/questions/725562/recursively-changing-the-content-type-for-files-of-a-given-extension-on-amazon-s
-            # aws s3 cp --include "*" \
-            #          --content-type="text/html" \
-            #          --metadata-directive="REPLACE" \
-            #          --recursive s3://${S3_BUCKET_NAME}/posts/ s3://${S3_BUCKET_NAME}/posts/
-
             aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DISTRIBUTION_ID} --paths '/*'
 
 workflows:

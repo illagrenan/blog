@@ -22,7 +22,7 @@ jobs:
           name: Install dependencies
           command: |
             source /tmp/venv/bin/activate
-            pip install --no-input --compile --exists-action=a --use-wheel -r ./requirements/base.txt
+            pip install --no-input --compile --exists-action=a --use-wheel -r ./requirements.txt
       - save_cache:
           paths:
             - /tmp/venv/

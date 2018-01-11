@@ -1,0 +1,49 @@
+// --------------------------
+// Navigation styles
+// --------------------------
+
+.articleCard {
+  margin-bottom: 1rem;
+}
+
+article, .masterContainer {
+  h1, h2, h3, h4, h4.card-title {
+    font-family: 'Slabo 27px', serif;
+  }
+
+  hr {
+    border-top: 1px solid #bbb;
+    text-align: center;
+    margin: 2rem 0 2rem 0;
+
+    // http://duncanlock.net/blog/2013/05/29/better-figures-images-plugin-for-pelican/
+    &::after {
+      color: #aaa;
+      font-family: 'Slabo 27px', serif;
+      content: "§";
+      display: inline-block;
+      position: relative;
+      top: -0.9rem;
+      padding: 0 0.25rem;
+      background: white;
+    }
+  }
+
+  a[data-lity] {
+    cursor: zoom-in;
+  }
+
+  figure.figure {
+    border: .25rem solid #eceeef;
+    background-color: lighten(#eceeef, 3%);
+    padding: 1rem;
+  }
+}
+
+.anchorjs-link {
+  transition: all .25s linear;
+}
+
+*:hover > .anchorjs-link {
+  margin-left: -0.1rem !important;
+}

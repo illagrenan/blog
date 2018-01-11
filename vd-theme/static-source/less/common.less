@@ -1,0 +1,91 @@
+// --------------------------
+// Common styles
+// --------------------------
+
+body {
+  padding-bottom: 1.5rem;
+}
+
+html, body {
+  font-family: 'Roboto', sans-serif;
+}
+
+blockquote {
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  border-left: 0.25rem solid #eceeef;
+}
+
+footer {
+  padding-top: 1.5rem;
+  margin-top: 3rem;
+  color: #777;
+  border-top: .05rem solid #e5e5e5;
+  height: 5rem;
+}
+
+.masterContainer {
+  a, a:link {
+    color: #2A5DB0;
+    text-decoration: underline;
+
+  }
+
+  a:visited {
+    color: #2200CC;
+    text-decoration: underline;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+a.gray-link {
+  &:link, &:visited {
+    color: #777;
+  }
+}
+
+pre, code {
+  font-family: Consolas, monaco, monospace;
+}
+
+.highlight {
+  pre, code {
+    background: #f8f7fa;
+    padding: 1rem;
+    border-radius: 5px;
+  }
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+header, footer {
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+/* Customize container */
+@media (min-width: 48em) {
+  .container {
+    max-width: 56rem;
+  }
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 48em) {
+  /* Remove the padding we set earlier */
+  header, footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  /* Space out the masthead */
+  header {
+    margin-bottom: 2rem;
+  }
+}
+
+
+

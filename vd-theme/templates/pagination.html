@@ -1,0 +1,11 @@
+{% if articles_paginator.num_pages > 1 %}
+    <!-- /Navigation -->
+    {% if articles_page.has_previous() %}
+        <a href="{{ SITEURL }}/{{ articles_previous_page.url }}"><i class="fa fa-caret-left"></i> Předchozí</a>
+    {% endif %}
+
+    {% if articles_page.has_next() %}
+        <a href="{{ SITEURL }}/{{ articles_next_page.url }}"> Další</a>
+    {% endif %}
+    <!-- /Navigation -->
+{% endif %}

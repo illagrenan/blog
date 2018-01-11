@@ -6,57 +6,81 @@ jobs:
     working_directory: /tmp/blog
     steps:
       - checkout
+
+      - run:
+          name: Create workspace directory
+          command: |
+            mkdir -p /tmp/workspace/published
+
       - restore_cache:
-          name: Restore Python env cache (for tests and awscli)
+          name: Restore Python virtual environment cache
           keys:
           - v1-venv-{{ .Branch }}-{{ checksum "./requirements.txt" }}-
           - v1-venv-{{ .Branch }}-
           - v1-venv-
+
       - run:
-          name: Install dependencies
+          name: Install Python dependencies
           command: |
             python3 -m venv /tmp/venv
             source /tmp/venv/bin/activate
             pip install --no-input --compile --exists-action=a --use-wheel --upgrade wheel setuptools awscli invoke
+
       - run:
           name: Install dependencies
           command: |
             source /tmp/venv/bin/activate
             pip install --no-input --compile --exists-action=a --use-wheel -r ./requirements.txt
+
+      - run:
+          name: Build Pelican content
+          command: |
+            source /tmp/venv/bin/activate
+            pelican -s publishconf.py -o /tmp/workspace/published/
+
       - save_cache:
           paths:
             - /tmp/venv/
           key: v1-venv-{{ .Branch }}-{{ checksum "./requirements.txt" }}-{{ epoch }}
+
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
             - published
 
   build-theme-job:
-    working_directory: /tmp/blog
+    working_directory: /tmp/workspace/
     docker:
       - image: node:9
 
     steps:
       - checkout
+
       - restore_cache:
           keys:
           - v1-dependencies-{{ .Branch }}-{{ checksum "package.json" }}-
           - v1-dependencies-{{ .Branch }}-
           - v1-dependencies-
+
+      - attach_workspace:
+          at: /tmp/workspace
+
       - run: yarn install --production=false --check-files --pure-lockfile --network-concurrency=32 --non-interactive
+
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ .Branch }}-{{ checksum "package.json" }}-{{ epoch }}
+
       - run:
           name: Install dependencies
           command: |
             gulp js --production
             gulp less --production
             gulp minify
-      - attach_workspace:
-          at: /tmp/workspace
+
+            # cp -R ./published /tmp/workspace/published
+
       - persist_to_workspace:
           root: /tmp/workspace
           paths:

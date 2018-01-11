@@ -1,0 +1,13 @@
+# humanstxt.org
+# We Are People, Not Machines
+
+    /* TEAM */
+    Vasek Dohnal
+    Site: https://www.vaclavdohnal.cz/
+    Twitter: @illagrenan
+    Location: Prague
+
+
+    /* SITE */
+    Created: 2016/03/06
+    Software: Python,Pelican

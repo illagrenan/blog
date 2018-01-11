@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}{% if articles_page.has_previous() %}- page {{ articles_page.number }} {% endif %}{{ super() }}{% endblock title %}
+{% block description %}{{ SITENAME }}, {{ SITESUBTITLE }}{% endblock description %}
+
+{% block content %}
+
+    <div class="col-md-9 col-sm-12">
+
+        <h1>Vašek Dohnal &mdash; blog</h1>
+
+        {% for article in articles_page.object_list %}
+            <div class="card articleCard">
+                <div class="card-block">
+                    <h4 class="card-title">
+                        <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+                    </h4>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ article.locale_date }}</h6>
+                    <div class="card-text">
+                        {{ article.summary }}
+                    </div>
+                    <a href="{{ SITEURL }}/{{ article.url }}" class="card-link">Číst dále &raquo;</a>
+                </div>
+            </div>
+        {% endfor %}
+
+        {% include 'pagination.html' %}
+    </div>
+
+{% endblock content %}

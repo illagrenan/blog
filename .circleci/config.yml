@@ -65,7 +65,11 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
 
-      - run: yarn install --production=false --check-files --pure-lockfile --network-concurrency=32 --non-interactive
+      - run:
+          name: Build Pelican content
+          command: |
+            yarn add gulp@next
+            yarn install --production=false --check-files --pure-lockfile --network-concurrency=32 --non-interactive
 
       - save_cache:
           paths:

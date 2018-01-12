@@ -67,7 +67,6 @@ jobs:
           name: Build Pelican content
           command: |
             yarn add gulp@next
-            yarn add bower
             yarn install --production=false --check-files --pure-lockfile --network-concurrency=32 --non-interactive
 
       - save_cache:
@@ -78,14 +77,12 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            node_modules/.bin/bower install --config.interactive=false --allow-root
             node_modules/.bin/gulp less --production
             node_modules/.bin/gulp minify
 
       - run:
           name: Install dependencies
           command: |
-            node_modules/.bin/gulp js --production
             node_modules/.bin/gulp less --production
             node_modules/.bin/gulp minify
 

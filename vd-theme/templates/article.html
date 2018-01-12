@@ -6,11 +6,11 @@
 
 {% block after_body %}
     {% if article.images %}
-        <script src="{{ SITEURL }}/theme/js/jquery.slim.js"></script>
-        <script src="{{ SITEURL }}/theme/js/lity.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/lity/2.3.0/lity.min.js"></script>
     {% endif %}
 
-    <script src="{{ SITEURL }}/theme/js/anchor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function (event) {
             anchors.add('article h1, article h2, article h3');

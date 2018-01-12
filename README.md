@@ -8,5 +8,6 @@
 ## Generate pygments styles ##
 
 ```bash
-pygmentize -S default -f html -a .highlight > pygmentize.css
+# -a .highlight
+pygmentize -S default -f html > pygmentize.css
 ```

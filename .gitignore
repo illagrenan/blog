@@ -175,3 +175,4 @@ Temporary Items
 node_modules
 bower_components
 published
+activate.ps1

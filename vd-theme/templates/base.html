@@ -1,228 +1,229 @@
 <!DOCTYPE html>
 <html lang="{{ DEFAULT_LANG }}">
 <head>
-    {% block head %}
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="{% block description %}{% endblock description %}">
-        <meta name="keywords" content="{% block keywords %}{% endblock keywords %}">
-        <meta name="robots" content="index,follow,archive">
-        <link rel="icon" href="{{ SITEURL }}/favicon.ico">
+  {% block head %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="{% block description %}{% endblock description %}">
+    <meta name="keywords" content="{% block keywords %}{% endblock keywords %}">
+    <meta name="robots" content="index,follow,archive">
+    <meta name="referrer" content="strict-origin">
+    <link rel="icon" href="{{ SITEURL }}/favicon.ico">
 
-        <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+    <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" 
-                integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
-                crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Roboto|Slabo+27px" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+          crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Slabo+27px" rel="stylesheet">
 
-        <link href="{{ SITEURL }}/theme/css/build.css" rel="stylesheet">
-        <!-- /CSS -->
+    <link href="{{ SITEURL }}/theme/css/build.css" rel="stylesheet">
+    <!-- /CSS -->
 
-        {% block canonical_rel %}{% endblock %}
+    {% block canonical_rel %}{% endblock %}
 
-        {% block meta %}
-            <meta name="author" content="{{ AUTHOR }}">
-        {% endblock %}
-
-        {% block opengraph %}
-            <meta property="og:site_name" content="{{ SITENAME }}">
-            <meta property="og:type" content="website">
-            <meta property="og:title" content="{{ SITENAME }}">
-            <meta property="og:url" content="{{ SITEURL }}">
-            <meta property="og:description" content="{{ SITENAME }}">
-        {% endblock %}
-
-        <!-- Add to homescreen for Chrome on Android -->
-        <meta name="mobile-web-app-capable" content="yes">
-
-        <!-- Add to homescreen for Safari on iOS -->
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <meta name="apple-mobile-web-app-title" content="{{ SITENAME }}">
-
-        <!-- RSS Feeds -->
-        {% if FEED_ALL_ATOM %}
-            <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed">
-        {% endif %}
-        {% if FEED_ALL_RSS %}
-            <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Full RSS Feed">
-        {% endif %}
-        {% if FEED_ATOM %}
-            <link href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed">
-        {% endif %}
-        {% if FEED_RSS %}
-            <link href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed">
-        {% endif %}
-        {% if CATEGORY_FEED_ATOM and category %}
-            <link href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_ATOM|format(category.slug) }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Categories Atom Feed">
-        {% endif %}
-        {% if CATEGORY_FEED_RSS and category %}
-            <link href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_RSS|format(category.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Categories RSS Feed">
-        {% endif %}
-        {% if TAG_FEED_ATOM and tag %}
-            <link href="{{ FEED_DOMAIN }}/{{ TAG_FEED_ATOM|format(tag.slug) }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Tags Atom Feed">
-        {% endif %}
-        {% if TAG_FEED_RSS and tag %}
-            <link href="{{ FEED_DOMAIN }}/{{ TAG_FEED_RSS|format(tag.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed">
-        {% endif %}
-        <!-- /RSS Feeds -->
-    {% endblock head %}
-
-    {% block extra_head %}
+    {% block meta %}
+      <meta name="author" content="{{ AUTHOR }}">
     {% endblock %}
+
+    {% block opengraph %}
+      <meta property="og:site_name" content="{{ SITENAME }}">
+      <meta property="og:type" content="website">
+      <meta property="og:title" content="{{ SITENAME }}">
+      <meta property="og:url" content="{{ SITEURL }}">
+      <meta property="og:description" content="{{ SITENAME }}">
+    {% endblock %}
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="{{ SITENAME }}">
+
+    <!-- RSS Feeds -->
+    {% if FEED_ALL_ATOM %}
+      <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed">
+    {% endif %}
+    {% if FEED_ALL_RSS %}
+      <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Full RSS Feed">
+    {% endif %}
+    {% if FEED_ATOM %}
+      <link href="{{ FEED_DOMAIN }}/{{ FEED_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed">
+    {% endif %}
+    {% if FEED_RSS %}
+      <link href="{{ FEED_DOMAIN }}/{{ FEED_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed">
+    {% endif %}
+    {% if CATEGORY_FEED_ATOM and category %}
+      <link href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_ATOM|format(category.slug) }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Categories Atom Feed">
+    {% endif %}
+    {% if CATEGORY_FEED_RSS and category %}
+      <link href="{{ FEED_DOMAIN }}/{{ CATEGORY_FEED_RSS|format(category.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Categories RSS Feed">
+    {% endif %}
+    {% if TAG_FEED_ATOM and tag %}
+      <link href="{{ FEED_DOMAIN }}/{{ TAG_FEED_ATOM|format(tag.slug) }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Tags Atom Feed">
+    {% endif %}
+    {% if TAG_FEED_RSS and tag %}
+      <link href="{{ FEED_DOMAIN }}/{{ TAG_FEED_RSS|format(tag.slug) }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Tags RSS Feed">
+    {% endif %}
+    <!-- /RSS Feeds -->
+  {% endblock head %}
+
+  {% block extra_head %}
+  {% endblock %}
 </head>
 
 <body>
 {% if GOOGLE_ANALYTICS and SITEURL %}
-    <script>
-        ga = function () {
-            ga.q.push(arguments)
-        };
-        ga.q = [];
-        ga.l = +new Date;
-        ga('create', '{{ GOOGLE_ANALYTICS }}', 'auto');
-        ga('send', 'pageview');
-    </script>
-    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+  <script>
+    ga = function () {
+      ga.q.push(arguments)
+    };
+    ga.q = [];
+    ga.l = +new Date;
+    ga('create', '{{ GOOGLE_ANALYTICS }}', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async defer></script>
 {% endif %}
 
 <div class="blog-masthead">
-    <div class="container">
-        <nav class="nav blog-nav">
-            <a class="nav-link {% if page_name == 'index' %} active{% endif %}" href="{{ SITEURL }}/">index/</a>
-            {% if DISPLAY_PAGES_ON_MENU %}
-                {% for pg in pages %}
-                    <a class="nav-link{% if pg == page %} active{% endif %}" href="{{ SITEURL }}/{{ pg.url }}">{{ pg.title }} {% if pg == page %}
-                        <span class="sr-only">(aktivní)</span>{% endif %}</a>
-                {% endfor %}
-            {% endif %}
-        </nav>
-    </div>
+  <div class="container">
+    <nav class="nav blog-nav">
+      <a class="nav-link {% if page_name == 'index' %} active{% endif %}" href="{{ SITEURL }}/">index/</a>
+      {% if DISPLAY_PAGES_ON_MENU %}
+        {% for pg in pages %}
+          <a class="nav-link{% if pg == page %} active{% endif %}" href="{{ SITEURL }}/{{ pg.url }}">{{ pg.title }} {% if pg == page %}
+            <span class="sr-only">(aktivní)</span>{% endif %}</a>
+        {% endfor %}
+      {% endif %}
+    </nav>
+  </div>
 </div>
 
 
 <div class="container masterContainer">
-    {#    <header class="clearfix">#}
-    {#        <nav>#}
-    {#    {% if DISPLAY_PAGES_ON_MENU %}#}
-    {#        <ul class="nav nav-pills float-right">#}
-    {#            {% for pg in pages %}#}
-    {#                <li class="nav-item">#}
-    {#                    <a class="nav-link{% if pg == page %} active{% endif %}" href="{{ SITEURL }}/{{ pg.url }}">{{ pg.title }} {% if pg == page %}#}
-    {#                        <span class="sr-only">(current)</span>{% endif %}</a>#}
-    {#                </li>#}
-    {#            {% endfor %}#}
-    {#        </ul>#}
-    {#    {% endif %}#}
-    {#        </nav>#}
-    {#    <h3 class="text-muted">#}
-    {#        <a href="{{ SITEURL }}/">{{ SITENAME }}</a>#}
-    {#    </h3>#}
-    {#    </header>#}
+  {#    <header class="clearfix">#}
+  {#        <nav>#}
+  {#    {% if DISPLAY_PAGES_ON_MENU %}#}
+  {#        <ul class="nav nav-pills float-right">#}
+  {#            {% for pg in pages %}#}
+  {#                <li class="nav-item">#}
+  {#                    <a class="nav-link{% if pg == page %} active{% endif %}" href="{{ SITEURL }}/{{ pg.url }}">{{ pg.title }} {% if pg == page %}#}
+  {#                        <span class="sr-only">(current)</span>{% endif %}</a>#}
+  {#                </li>#}
+  {#            {% endfor %}#}
+  {#        </ul>#}
+  {#    {% endif %}#}
+  {#        </nav>#}
+  {#    <h3 class="text-muted">#}
+  {#        <a href="{{ SITEURL }}/">{{ SITENAME }}</a>#}
+  {#    </h3>#}
+  {#    </header>#}
 
 
-    {#    <div class="row">#}
-    {#        <!-- Header -->#}
-    {#        {% block header %}#}
-    {#        {% endblock header %}#}
-    {#        <!-- /Header -->#}
-    {#    </div>#}
+  {#    <div class="row">#}
+  {#        <!-- Header -->#}
+  {#        {% block header %}#}
+  {#        {% endblock header %}#}
+  {#        <!-- /Header -->#}
+  {#    </div>#}
 
-    <section class="row">
-        <!-- Content -->
-        {% block content %}
-        {% endblock %}
-        <!-- /Content -->
+  <section class="row">
+    <!-- Content -->
+    {% block content %}
+    {% endblock %}
+    <!-- /Content -->
 
-        {% block sidebar %}
-            <div class="col-md-3 col-sm-12 blog-sidebar">
-                <div class="sidebar-module sidebar-module-inset">
-                    <h4>O mně</h4>
-                    <p>
-                        Jako <em>freelancer</em> píšu webové aplikace v&nbsp;<a href="https://www.djangoproject.com/" target="_blank">Django</a>, o&nbsp;kterém je převážně tento blog.
-                    </p>
-                </div>
-                {#            <div class="sidebar-module">#}
-                {#                <h4>Archives</h4>#}
-                {#                <ol class="list-unstyled">#}
-                {#                    <li><a href="#">March 2014</a></li>#}
-                {#                    <li><a href="#">February 2014</a></li>#}
-                {#                    <li><a href="#">January 2014</a></li>#}
-                {#                    <li><a href="#">December 2013</a></li>#}
-                {#                    <li><a href="#">November 2013</a></li>#}
-                {#                    <li><a href="#">October 2013</a></li>#}
-                {#                    <li><a href="#">September 2013</a></li>#}
-                {#                    <li><a href="#">August 2013</a></li>#}
-                {#                    <li><a href="#">July 2013</a></li>#}
-                {#                    <li><a href="#">June 2013</a></li>#}
-                {#                    <li><a href="#">May 2013</a></li>#}
-                {#                    <li><a href="#">April 2013</a></li>#}
-                {#                </ol>#}
-                {#            </div>#}
-                <div class="sidebar-module">
-                    <h4>Kde mě ještě najdete</h4>
-                    <ol class="list-unstyled">
-                        <li><a href="https://github.com/illagrenan/" target="_blank">GitHub</a></li>
-                        <li><a href="https://www.linkedin.com/in/vaclavdohnal/" target="_blank">LinkedIn</a></li>
-                    </ol>
-                </div>
-            </div><!-- /.blog-sidebar -->
-        {% endblock %}
-    </section>
-
-    {#    <div class="row marketing">#}
-    {#        <div class="col-lg-6">#}
-    {#            <h4>Subheading</h4>#}
-    {#            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>#}
-    {##}
-    {#            <h4>Subheading</h4>#}
-    {#            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>#}
-    {##}
-    {#            <h4>Subheading</h4>#}
-    {#            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>#}
-    {#        </div>#}
-    {##}
-    {#        <div class="col-lg-6">#}
-    {#            <h4>Subheading</h4>#}
-    {#            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>#}
-    {##}
-    {#            <h4>Subheading</h4>#}
-    {#            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>#}
-    {##}
-    {#            <h4>Subheading</h4>#}
-    {#            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>#}
-    {#        </div>#}
-    {#    </div>#}
-
-    <footer class="footer">
-        <div class="container">
-            <div class="text-muted small">
-                <p>
-                    &copy; 2016&mdash;2018 <a href="https://www.vaclavdohnal.cz" target="_blank" class="gray-link">Vašek Dohnal</a>. Není-li uvedeno jinak, jsou zdrojové kódy publikovány pod <a
-                        href="https://opensource.org/licenses/MIT" target="_blank">licení MIT</a>.
-                </p>
-
-                <p>
-                    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licence Creative Commons" style="border-width:0"
-                                                                                             src="https://i.creativecommons.org/l/by/4.0/88x31.png"/></a>
-                    &nbsp;Toto dílo podléhá licenci <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Uveďte původ 4.0 Mezinárodní License</a>.
-                </p>
-
-                <p>
-                    {% if FEED_ALL_ATOM %}
-                        <a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate">Atom Feed</a> |
-                    {% endif %}
-                    {% if FEED_ALL_RSS %}
-                        <a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate">RSS Feed</a>
-                    {% endif %}
-                    | Blog je generován nástrojem <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a>
-                </p>
-            </div>
+    {% block sidebar %}
+      <div class="col-md-3 col-sm-12 blog-sidebar">
+        <div class="sidebar-module sidebar-module-inset">
+          <h4>O mně</h4>
+          <p>
+            Jako <em>freelancer</em> píšu webové aplikace v&nbsp;<a href="https://www.djangoproject.com/" target="_blank">Django</a>, o&nbsp;kterém je převážně tento blog.
+          </p>
         </div>
-    </footer>
+        {#            <div class="sidebar-module">#}
+        {#                <h4>Archives</h4>#}
+        {#                <ol class="list-unstyled">#}
+        {#                    <li><a href="#">March 2014</a></li>#}
+        {#                    <li><a href="#">February 2014</a></li>#}
+        {#                    <li><a href="#">January 2014</a></li>#}
+        {#                    <li><a href="#">December 2013</a></li>#}
+        {#                    <li><a href="#">November 2013</a></li>#}
+        {#                    <li><a href="#">October 2013</a></li>#}
+        {#                    <li><a href="#">September 2013</a></li>#}
+        {#                    <li><a href="#">August 2013</a></li>#}
+        {#                    <li><a href="#">July 2013</a></li>#}
+        {#                    <li><a href="#">June 2013</a></li>#}
+        {#                    <li><a href="#">May 2013</a></li>#}
+        {#                    <li><a href="#">April 2013</a></li>#}
+        {#                </ol>#}
+        {#            </div>#}
+        <div class="sidebar-module">
+          <h4>Kde mě ještě najdete</h4>
+          <ol class="list-unstyled">
+            <li><a href="https://github.com/illagrenan/" target="_blank">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/vaclavdohnal/" target="_blank">LinkedIn</a></li>
+          </ol>
+        </div>
+      </div><!-- /.blog-sidebar -->
+    {% endblock %}
+  </section>
+
+  {#    <div class="row marketing">#}
+  {#        <div class="col-lg-6">#}
+  {#            <h4>Subheading</h4>#}
+  {#            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>#}
+  {##}
+  {#            <h4>Subheading</h4>#}
+  {#            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>#}
+  {##}
+  {#            <h4>Subheading</h4>#}
+  {#            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>#}
+  {#        </div>#}
+  {##}
+  {#        <div class="col-lg-6">#}
+  {#            <h4>Subheading</h4>#}
+  {#            <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>#}
+  {##}
+  {#            <h4>Subheading</h4>#}
+  {#            <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>#}
+  {##}
+  {#            <h4>Subheading</h4>#}
+  {#            <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>#}
+  {#        </div>#}
+  {#    </div>#}
+
+  <footer class="footer">
+    <div class="container">
+      <div class="text-muted small">
+        <p>
+          &copy; 2016&mdash;2018 <a href="https://www.vaclavdohnal.cz" target="_blank" class="gray-link">Vašek Dohnal</a>. Není-li uvedeno jinak, jsou zdrojové kódy publikovány pod <a
+          href="https://opensource.org/licenses/MIT" target="_blank">licení MIT</a>.
+        </p>
+
+        <p>
+          <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licence Creative Commons" style="border-width:0"
+                                                                                   src="https://i.creativecommons.org/l/by/4.0/88x31.png"/></a>
+          &nbsp;Toto dílo podléhá licenci <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Uveďte původ 4.0 Mezinárodní License</a>.
+        </p>
+
+        <p>
+          {% if FEED_ALL_ATOM %}
+            <a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate">Atom Feed</a> |
+          {% endif %}
+          {% if FEED_ALL_RSS %}
+            <a href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate">RSS Feed</a>
+          {% endif %}
+          | Blog je generován nástrojem <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a>
+        </p>
+      </div>
+    </div>
+  </footer>
 
 </div> <!-- /container -->
 

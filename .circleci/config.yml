@@ -144,9 +144,10 @@ jobs:
 
             find ./published
 
-            aws s3 sync /tmp/workspace/published s3://${S3_BUCKET_NAME}/ --exclude "pages/*" --exclude "posts/*" --delete --acl='public-read'
-            aws s3 sync /tmp/workspace/published/pages s3://${S3_BUCKET_NAME}/pages --delete --acl='public-read' --no-guess-mime-type  --content-type="text/html"
-            aws s3 sync /tmp/workspace/published/posts s3://${S3_BUCKET_NAME}/posts --delete --acl='public-read' --no-guess-mime-type  --content-type="text/html"
+            # Removed --acl='public-read'
+            aws s3 sync /tmp/workspace/published s3://${S3_BUCKET_NAME}/ --exclude "pages/*" --exclude "posts/*" --delete
+            aws s3 sync /tmp/workspace/published/pages s3://${S3_BUCKET_NAME}/pages --delete --no-guess-mime-type  --content-type="text/html"
+            aws s3 sync /tmp/workspace/published/posts s3://${S3_BUCKET_NAME}/posts --delete --no-guess-mime-type  --content-type="text/html"
 
             aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DISTRIBUTION_ID} --paths '/*'
 

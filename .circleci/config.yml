@@ -86,7 +86,7 @@ jobs:
             node_modules/.bin/gulp less --production
             node_modules/.bin/gulp minify
 
-            find ./published
+            cp ./vd-theme/static/css/build.css ./published/theme/css/
 
       - persist_to_workspace:
           root: /tmp/workspace
@@ -126,11 +126,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            # Ref: https://unix.stackexchange.com/questions/34549/how-to-rename-multiple-files-by-removing-the-extension#comment46942_34578
-            # for i in ./published/**/*.html; do mv -i "$i" "${i%.html}"; done
-
-            find ./published
-
+            # Ref: https://unix.stackexchange.com/questions/34549/how-to-rename-multiple-files-by-removing-the-extension
             find ./published/posts/ ./published/pages/ -name "*.html" -exec rename 's/\.html$//' '{}' \;
             find ./published/posts/ ./published/pages/ -name "*.html" -type f -delete
 
@@ -138,8 +134,6 @@ jobs:
           name: Deploy to S3 if tests pass and branch is Master
           command: |
             source /tmp/venv/bin/activate
-
-            find ./published
 
             # Removed --acl='public-read'
             aws s3 sync /tmp/workspace/published s3://${S3_BUCKET_NAME}/ --exclude "pages/*" --exclude "posts/*" --delete

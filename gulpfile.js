@@ -52,7 +52,7 @@ gulp.task('less', () => {
       del(['vd-theme/static/css/*']);
     }
 
-    gulp.src(['vd-theme/static-source/less/*.less', 'bower_components/lity/dist/lity.css'])
+    gulp.src(['vd-theme/static-source/less/*.less'])
       .pipe(gIf(!production, sourcemaps.init()))
       .pipe(less())
       .pipe(concat('build.css'))

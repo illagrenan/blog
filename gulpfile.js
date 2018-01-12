@@ -20,58 +20,58 @@ const watch_argv = !!argv.watch;
 const production = !!argv.production;
 
 gulp.task('js', function () {
-    gutil.log(gutil.colors.bgGreen(production));
+  gutil.log(gutil.colors.bgGreen(production));
 
-    if (production) {
-        del(['vd-theme/static/js/*']);
-    }
+  if (production) {
+    del(['vd-theme/static/js/*']);
+  }
 
-    gulp.src('bower_components/anchor-js/anchor.js')
-        .pipe(gIf(production, uglify()))
-        .pipe(gulp.dest('vd-theme/static/js/'));
+  gulp.src('bower_components/anchor-js/anchor.js')
+    .pipe(gIf(production, uglify()))
+    .pipe(gulp.dest('vd-theme/static/js/'));
 
-    gulp.src('bower_components/jquery/dist/jquery.slim.js')
-        .pipe(gIf(production, uglify()))
-        .pipe(gulp.dest('vd-theme/static/js/'));
+  gulp.src('bower_components/jquery/dist/jquery.slim.js')
+    .pipe(gIf(production, uglify()))
+    .pipe(gulp.dest('vd-theme/static/js/'));
 
-    gulp.src('bower_components/lity/dist/lity.js')
-        .pipe(gIf(production, uglify()))
-        .pipe(gulp.dest('vd-theme/static/js/'));
+  gulp.src('bower_components/lity/dist/lity.js')
+    .pipe(gIf(production, uglify()))
+    .pipe(gulp.dest('vd-theme/static/js/'));
 });
 
 gulp.task('minify', function () {
-    return gulp.src('published/**/*.html')
-        .pipe(htmlmin({collapseWhitespace: true}))
-        .pipe(gulp.dest('published'));
+  return gulp.src('published/**/*.html')
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest('published'));
 });
 
 gulp.task('less', () => {
-        gutil.log(gutil.colors.bgGreen(production));
+    gutil.log(gutil.colors.bgGreen(production));
 
-        if (production) {
-            del(['vd-theme/static/css/*']);
-        }
+    if (production) {
+      del(['vd-theme/static/css/*']);
+    }
 
-        gulp.src(['vd-theme/static-source/less/*.less', 'bower_components/lity/dist/lity.css'])
-            .pipe(gIf(!production, sourcemaps.init()))
-            .pipe(less())
-            .pipe(concat('build.css'))
-            .pipe(gIf(production, cleanCSS({compatibility: 'ie9'})))
-            .pipe(autoprefixer({browsers: ['last 3 versions'], cascade: false}))
-            .pipe(gIf(!production, sourcemaps.write('.')))
-            .pipe(gulp.dest('vd-theme/static/css/'));
+    gulp.src(['vd-theme/static-source/less/*.less', 'bower_components/lity/dist/lity.css'])
+      .pipe(gIf(!production, sourcemaps.init()))
+      .pipe(less())
+      .pipe(concat('build.css'))
+      .pipe(gIf(production, cleanCSS({compatibility: 'ie9'})))
+      .pipe(autoprefixer({browsers: ['last 3 versions'], cascade: false}))
+      .pipe(gIf(!production, sourcemaps.write('.')))
+      .pipe(gulp.dest('vd-theme/static/css/'));
 
-        if (watch_argv) {
-
-        }
+    if (watch_argv) {
 
     }
+
+  }
 );
 
 gulp.task('build', function () {
-    gulp.start(['less', 'js']);
+  gulp.start(['less', 'js']);
 
-    if (watch_argv) {
-        gulp.watch('vd-theme/static-source/less/*.less', ['less']);
-    }
+  if (watch_argv) {
+    gulp.watch('vd-theme/static-source/less/*.less', ['less']);
+  }
 });

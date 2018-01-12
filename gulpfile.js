@@ -31,6 +31,7 @@ gulp.task('less', () => {
 
     gulp.src(['vd-theme/static-source/less/*.less'])
       .pipe(gIf(!production, sourcemaps.init()))
+      .pipe(gIf(!production, sourcemaps.init()))
       .pipe(less())
       .pipe(concat('build.css'))
       .pipe(gIf(production, cleanCSS({compatibility: 'ie10'})))

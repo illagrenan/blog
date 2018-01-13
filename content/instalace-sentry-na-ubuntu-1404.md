@@ -20,8 +20,8 @@ Sentry ([https://getsentry.com/welcome/](https://getsentry.com/welcome/ "Sentry 
 
 <figure class="figure">
 
-<a href="https://dl.dropboxusercontent.com/u/80507/blog_vaclavdohnal_cz/images/sentry/AdminEmailHandler.png" data-lity>
-    <img src="https://dl.dropboxusercontent.com/u/80507/blog_vaclavdohnal_cz/images/sentry/AdminEmailHandler.png"
+<a href="{filename}/images/sentry/AdminEmailHandler.png" data-lity>
+    <img src="{filename}/images/sentry/AdminEmailHandler.png"
             class="figure-img img-fluid rounded"
             alt="Defaultní Django error report">
 </a>
@@ -32,8 +32,8 @@ Sentry ([https://getsentry.com/welcome/](https://getsentry.com/welcome/ "Sentry 
 Dle mého názoru má toto dobře [vyřešeno např. nette](https://tracy.nette.org/cs/#toc-produkcni-rezim-a-logovani-chyb "nette – Produkční režim a logování chyb"), které v produkčním režimu (`DEBUG=False`) pošle vývojáři chybovou stránku se všemi důležitými informacemi, zaloguje chybu a dokud se neřekne, další e-mail nepošle.
 
 <figure class="figure">
-<a href="https://dl.dropboxusercontent.com/u/80507/blog_vaclavdohnal_cz/images/sentry/sentry-error-header.png" data-lity>
-    <img src="https://dl.dropboxusercontent.com/u/80507/blog_vaclavdohnal_cz/images/sentry/sentry-error-header.png"
+<a href="{filename}/images/sentry/sentry-error-header.png" data-lity>
+    <img src="{filename}/images/sentry/sentry-error-header.png"
             class="figure-img img-fluid rounded"
             alt="Zpráva na Sentry">
 </a>
@@ -45,16 +45,16 @@ Dle mého názoru má toto dobře [vyřešeno např. nette](https://tracy.nette.
 
 
 <figure class="figure">
-<a href="https://dl.dropboxusercontent.com/u/80507/blog_vaclavdohnal_cz/images/sentry/sentry-stacktrace.png" data-lity>
-<img src="https://dl.dropboxusercontent.com/u/80507/blog_vaclavdohnal_cz/images/sentry/sentry-stacktrace.png" class="figure-img img-fluid rounded" alt="Sentry stacktrace">
+<a href="{filename}/images/sentry/sentry-stacktrace.png" data-lity>
+<img src="{filename}/images/sentry/sentry-stacktrace.png" class="figure-img img-fluid rounded" alt="Sentry stacktrace">
 </a>
 <figcaption class="figure-caption">Stacktrace na Sentry s výpisem lokálních proměnných.</figcaption>
 </figure>
 
 <figure class="figure">
 
-<a href="https://dl.dropboxusercontent.com/u/80507/blog_vaclavdohnal_cz/images/sentry/sentry-replay-request.png" data-lity>
-    <img src="https://dl.dropboxusercontent.com/u/80507/blog_vaclavdohnal_cz/images/sentry/sentry-replay-request.png"
+<a href="{filename}/images/sentry/sentry-replay-request.png" data-lity>
+    <img src="{filename}/images/sentry/sentry-replay-request.png"
             class="figure-img img-fluid rounded"
             alt="Replay request">
 </a>
@@ -206,8 +206,8 @@ Na `http://{IP_ADRESA_SERVERU}:9000` by měla nyní běžet aplikace, dobrá pr�
 
 <figure class="figure">
 
-<a href="https://dl.dropboxusercontent.com/u/80507/blog_vaclavdohnal_cz/images/sentry/sentry-welcome.png" data-lity>
-    <img src="https://dl.dropboxusercontent.com/u/80507/blog_vaclavdohnal_cz/images/sentry/sentry-welcome.png"
+<a href="{filename}/images/sentry/sentry-welcome.png" data-lity>
+    <img src="{filename}/images/sentry/sentry-welcome.png"
             class="figure-img img-fluid rounded"
             alt="Replay request">
 </a>
@@ -218,8 +218,8 @@ Na `http://{IP_ADRESA_SERVERU}:9000` by měla nyní běžet aplikace, dobrá pr�
 
 <figure class="figure">
 
-<a href="https://dl.dropboxusercontent.com/u/80507/blog_vaclavdohnal_cz/images/sentry/sentry-warnings.png" data-lity>
-    <img src="https://dl.dropboxusercontent.com/u/80507/blog_vaclavdohnal_cz/images/sentry/sentry-warnings.png"
+<a href="{filename}/images/sentry/sentry-warnings.png" data-lity>
+    <img src="{filename}/images/sentry/sentry-warnings.png"
             class="figure-img img-fluid rounded"
             alt="Replay request">
 </a>

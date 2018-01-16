@@ -87,5 +87,13 @@ header, footer {
   }
 }
 
+.noDecoration {
+  &, &:visited, &:link, &:hover, & > img {
+    text-decoration: none !important;
+    border: none;
+  }
+}
 
-
+.noBorder {
+  border-width: 0;
+}

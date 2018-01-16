@@ -58,7 +58,18 @@ TYPOGRIFY = True
 DISQUS_SITENAME = "vaekdohnalblog"
 
 PLUGIN_PATHS = ['./pelican-plugins']
-PLUGINS = ['sitemap', ]
+PLUGINS = ['sitemap' ]
+MARKDOWN = {
+  'extension_configs': {
+    'markdown.extensions.toc': {
+      'title': 'Obsah'
+    },
+    'markdown.extensions.codehilite': {'css_class': 'highlight'},
+    'markdown.extensions.extra': {},
+    'markdown.extensions.meta': {},
+  },
+  'output_format': 'html5',
+}
 
 SITEMAP = {
     'format': 'xml',
